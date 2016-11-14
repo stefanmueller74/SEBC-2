@@ -11,8 +11,8 @@ sudo rpm -ivh mysql-community-release-el6-5.noarch.rpm
 yum update -y
 sudo yum install -y mysql-server
 sudo yum install -y mysql
-sudo systemctl start mysqld
 service mysqld start
+chkconfig mysqld on
 </code></pre>
 
 ## Just in case on master and replica node (or add an exception)
@@ -29,6 +29,13 @@ sudo rpm -ivh mysql-community-release-el6-5.noarch.rpm
 yum update -y
 sudo yum install -y mysql
 </code></pre>
+
+## Add jdbc connector from oracle website v5.1 and add to path (/usr/bin already in path)
+<pre><code>
+wget http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.40.tar.gz
+tar -xzvf mysql-connector-java-5.1.40.tar.gz
+sudo mv mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar /usr/bin/
+</pre></code>
 
 ## Run mysql_secure_installation and configure root on both edge and replica server
 
