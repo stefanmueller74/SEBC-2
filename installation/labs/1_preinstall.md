@@ -77,8 +77,11 @@ lo        Link encap:Local Loopback
 </code></pre>
 
 # 6.
-## Have to install nslookup
-<pre><code>sudo yum install -y bind-utils
+## Had to install nslookup
+<pre><code>sudo yum install -y bind-utils</code></pre>
+
+## Added hosts
+<pre><code>vi /etc/hosts</code></pre>
 
 ## Get hosts from cluster
 <pre><code>getent hosts
