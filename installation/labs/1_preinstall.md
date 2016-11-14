@@ -1,6 +1,6 @@
 # 1.
 ## For runtime effect
-sudo sysctl vm.swappiness=1
+<pre><code>sudo sysctl vm.swappiness=1</code></pre>
 
 ## For permanent effect
 sudo vi /etc/sysctl.conf
@@ -115,4 +115,4 @@ service ntpd start
 service ntpd status
 ntpd (pid  1585) is running...
 
-## Apply to all hosts
+# Apply to all hosts
