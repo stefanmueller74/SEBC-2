@@ -3,42 +3,46 @@
 <pre><code>sudo sysctl vm.swappiness=1</code></pre>
 
 ## For permanent effect
-sudo vi /etc/sysctl.conf
-vm.swappiness=1
+<pre><code>sudo vi /etc/sysctl.conf
+vm.swappiness=1</code></pre>
 
 ## In both cases, we get
-cat /proc/sys/vm/swappiness
+<pre><code>cat /proc/sys/vm/swappiness
 1
+</code></pre>
 
 # 2.
 ## Mount attributes 
-mount -l 
+<pre><code>mount -l 
 /dev/xvda1 on / type ext4 (rw)
 proc on /proc type proc (rw)
 sysfs on /sys type sysfs (rw)
 devpts on /dev/pts type devpts (rw,gid=5,mode=620)
 tmpfs on /dev/shm type tmpfs (rw,rootcontext="system_u:object_r:tmpfs_t:s0")
 none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+</code></pre>
 
 # 3.
 ## Allocated space
-df -h
+<pre><code>df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/xvda1      7.8G  666M  6.7G   9% /
 tmpfs           7.3G     0  7.3G   0% /dev/shm
+</code></pre>
 
 # 4.
 ## For permanent effect
-Added transparent_hugepage=never at the end of kernel line in /boot/grub/grub.con
+Added transparent_hugepage=never at the end of kernel line in /boot/grub/grub.conf
 
 ## For runtime effect
-echo never > /sys/kernel/mm/redhat_transparent_hugepage/enabled
+<pre><code>echo never > /sys/kernel/mm/redhat_transparent_hugepage/enabled
 echo never > /sys/kernel/mm/redhat_transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
+</code></pre>
 
 ## Checking it worked
-grep -i HugePages_Total 
+<pre><code>grep -i HugePages_Total 
 /proc/meminfo 
 HugePages_Total:       0
 
@@ -47,10 +51,11 @@ cat /proc/sys/vm/nr_hugepages
 
 sysctl vm.nr_hugepages
 vm.nr_hugepages = 0
+</code></pre>
 
 # 5.
 ## Network interfaces information
-ifconfig
+<pre><code>ifconfig
 eth0      Link encap:Ethernet  HWaddr 02:F7:6B:AE:57:47  
           inet addr:172.31.9.39  Bcast:172.31.15.255  Mask:255.255.240.0
           inet6 addr: fe80::f7:6bff:feae:5747/64 Scope:Link
@@ -69,13 +74,14 @@ lo        Link encap:Local Loopback
           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0 
           RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+</code></pre>
 
 # 6.
 ## Have to install nslookup
-sudo yum install -y bind-utils
+<pre><code>sudo yum install -y bind-utils
 
 ## Get hosts from cluster
-getent hosts
+<pre><code>getent hosts
 127.0.0.1       localhost localhost.localdomain localhost4 localhost4.localdomain4
 127.0.0.1       localhost localhost.localdomain localhost6 localhost6.localdomain6
 172.31.9.37     master
@@ -83,36 +89,39 @@ getent hosts
 172.31.9.35     node1
 172.31.9.38     node2
 172.31.9.36     node3
+</code></pre>
 
 ## Nslookup only with a dns server
 
 # 7.
 ## nscd not installed 
-yum install -y nscd
+<pre><code>yum install -y nscd</code></pre>
 
 ## Starting
-service nscd start
+<pre><code>service nscd start</code></pre>
 
 ## Checking
-service nscd status
+<pre><code>service nscd status
 nscd (pid 1501) is running...
+</code></pre>
 
 #8.
 
 ## ntpd not installed
-yum install -y ntp ntpdate ntp-doc
+<pre><code>yum install -y ntp ntpdate ntp-doc</code></pre>
 
 ## Activate ntpd
-chkconfig ntpd on
+<pre><code>chkconfig ntpd on</code></pre>
 
 ## Synchronize
-ntpdate pool.ntp.org
+<pre><code>ntpdate pool.ntp.org</code></pre>
 
 ## Starting
-service ntpd start
+<pre><code>service ntpd start</code></pre>
 
 ## Checking
-service ntpd status
+<pre><code>service ntpd status
 ntpd (pid  1585) is running...
+</code></pre>
 
 # Apply to all hosts
