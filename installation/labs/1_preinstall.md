@@ -127,4 +127,7 @@ nscd (pid 1501) is running...
 ntpd (pid  1585) is running...
 </code></pre>
 
+AWS instances typically already run ntp, albeit chronyd. chronyd is better for computers that are seeing a lot of power cycles. 
+systemctl status chronyd 
+
 # Apply to all hosts
