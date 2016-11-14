@@ -42,8 +42,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/defrag
 </code></pre>
 
 ## Checking it worked
-<pre><code>grep -i HugePages_Total 
-/proc/meminfo 
+<pre><code>grep -i HugePages_Total /proc/meminfo 
 HugePages_Total:       0
 
 cat /proc/sys/vm/nr_hugepages 
@@ -95,6 +94,15 @@ lo        Link encap:Local Loopback
 </code></pre>
 
 ## Nslookup only with a dns server
+
+## Ping ping
+<pre><code>ping -c 5 master
+ping -c 5 edge
+ping -c 5 node1
+ping -c 5 node2
+ping -c 5 node3
+
+</pre></code>
 
 # 7.
 ## nscd not installed 
