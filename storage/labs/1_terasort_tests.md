@@ -75,4 +75,4 @@ sys	0m0.333s
 </code></pre>
 
 
-### Cut by two, we could also adjust the memory of the mapper, the allocation of cores, cache some data, use spark, increase the number of reducers
+### Cut by two, we could also adjust the memory of the mapper, the allocation of cores, cache some data, use spark, increase the number of reducers and probably add a bit more memory to sort and shuffle phase
