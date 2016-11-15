@@ -13,8 +13,8 @@ hadoop distcp hdfs://nn1:8020/terasort hdfs://nn2:8020/terasort_distcp
 
 ## Running fsck on source folder in my cluster
 ### Everything looks fine
-hdfs fsck /user/root/terasort -files -blocks
 <pre><code>
+hdfs fsck /user/root/terasort -files -blocks
 Connecting to namenode via http://ip-172-31-9-37.eu-west-1.compute.internal:50070
 FSCK started by hdfs (auth:SIMPLE) from /172.31.9.37 for path /user/root/terasort at Tue Nov 15 16:07:43 UTC 2016
 /user/root/terasort <dir>
