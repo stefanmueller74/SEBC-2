@@ -4,11 +4,11 @@
 yum install -y yum-utils
 yum-config-manager --add-repo https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
 yum update -y
-sudo yum install -y oracle-j2sdk1.7
 </code></pre>
 
 ## On edge 
 <pre><code>
+sudo yum install -y oracle-j2sdk1.7
 sudo yum install cloudera-manager-daemons cloudera-manager-server
 
 /etc/default/cloudera-scm-server switch xmx to 4G
@@ -53,4 +53,11 @@ grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'password';
 ## If problem with statement execution (on master)
 <pre><code>
 SET GLOBAL binlog_format = 'ROW'; 
+</code></pre>
+
+
+## If problem of CDH agent not recognizing server
+<pre><code>
+rm -f /var/lib/cloudera-scm-agent/cm_guid
+service cloudera-scm-agent restart
 </code></pre>
