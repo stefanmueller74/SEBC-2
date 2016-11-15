@@ -19,7 +19,6 @@ vi /etc/cloudera-scm-server/db.properties and uncomment the line with localhost
 
 ## Modify /etc/cloudera-scm-server/db.properties with this
 <pre><code>
-
 com.cloudera.cmf.db.type=mysql
 com.cloudera.cmf.db.host=localhost
 com.cloudera.cmf.db.name=cmserver
@@ -33,13 +32,22 @@ com.cloudera.cmf.db.setupType=EXTERNAL
 mysql -u root -p
 create database amon DEFAULT CHARACTER SET utf8;
 create database rman DEFAULT CHARACTER SET utf8;
+create database metastore DEFAULT CHARACTER SET utf8;
+create database oozie DEFAULT CHARACTER SET utf8;
+create database hue DEFAULT CHARACTER SET utf8;
 create database cmserver DEFAULT CHARACTER SET utf8;
-grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'password';
-grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'password';
-grant all on cmserver.* TO 'cmserver'@'%' IDENTIFIED BY 'password';
 CREATE USER 'amon'@'localhost' IDENTIFIED BY 'password';
 CREATE USER 'rman'@'localhost' IDENTIFIED BY 'password';
 CREATE USER 'cmserver'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'hive'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'hue'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'oozie'@'localhost' IDENTIFIED BY 'password';
+grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'password';
+grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'password';
+grant all on cmserver.* TO 'cmserver'@'%' IDENTIFIED BY 'password';
+grant all on metastore.* TO 'hive'@'%' IDENTIFIED BY 'password';
+grant all on hue.* TO 'hue'@'%' IDENTIFIED BY 'password';
+grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'password';
 </code></pre>
 
 ## If problem with statement execution (on master)

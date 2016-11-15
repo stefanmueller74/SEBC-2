@@ -79,8 +79,7 @@ lo        Link encap:Local Loopback
 ## Had to install nslookup
 <pre><code>sudo yum install -y bind-utils</code></pre>
 
-## Added hosts
-<pre><code>vi /etc/hosts</code></pre>
+## Do not add /etc/hosts on AWS it has its own DNS
 
 ## Get hosts from cluster
 <pre><code>getent hosts
