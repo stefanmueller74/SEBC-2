@@ -3,6 +3,7 @@
 <pre><code>
 yum install -y yum-utils
 yum-config-manager --add-repo https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
+vi /etc/yum.repos.d with https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.8.2/
 yum update -y
 </code></pre>
 
@@ -10,12 +11,6 @@ yum update -y
 <pre><code>
 sudo yum install -y oracle-j2sdk1.7
 sudo yum install cloudera-manager-daemons cloudera-manager-server
-
-/etc/default/cloudera-scm-server switch xmx to 4G
-sudo service cloudera-scm-server start
-
-vi /etc/cloudera-scm-server/db.properties and uncomment the line with localhost
-</code></pre>
 
 ## Modify /etc/cloudera-scm-server/db.properties with this
 <pre><code>
@@ -48,7 +43,17 @@ grant all on cmserver.* TO 'cmserver'@'%' IDENTIFIED BY 'password';
 grant all on metastore.* TO 'hive'@'%' IDENTIFIED BY 'password';
 grant all on hue.* TO 'hue'@'%' IDENTIFIED BY 'password';
 grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'password';
+
+/etc/default/cloudera-scm-server switch xmx to 4G
+sudo service cloudera-scm-server start
+service iptables stop
+
+vi /etc/cloudera-scm-server/db.properties and uncomment the line with localhost
+
 </code></pre>
+
+## Rename the cluster
+
 
 ## If problem with statement execution (on master)
 <pre><code>

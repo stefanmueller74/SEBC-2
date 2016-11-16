@@ -1,5 +1,4 @@
-## I already had the 5.9 Cloudera manager with CDH 5.8, upgrading to CDH 5.9
-
+# Prepare for upgrade and upgrade
 ## Backup databases
 
 <pre><code>
@@ -11,18 +10,41 @@ mysqldump -u root -p hue > hue.sql
 mysqldump -u root -p oozie > oozie.sql
 </code></pre>
 
-## Run through wizard via Home > Status > Upgrade cluster
+## Stop cloudera management service via console
 
+## Update max_connections for mysql
+<pre><code>
+vi /etc/my.cnf
+
+[mysqld]
+max_connections = 100
+
+service mysqld restart
+
+sudo service cloudera-scm-server stop
+sudo service cloudera-scm-agent stop
+
+cp -r /etc/cloudera-scm-server /etc/cloudera-scm-server.back
+cp -r /etc/cloudera-scm-agent /etc/cloudera-scm-agent.back
+
+sudo yum clean all
+sudo yum upgrade cloudera-manager-server cloudera-manager-daemons cloudera-manager-agent
+sudo service cloudera-scm-server start
+</code></pre>
+
+## Install with cloudera manager the other agents
+
+# Results
 
 ## Get API version
 <pre><code>
-curl -u 'arthurbaudry:cloudera' "http://52.19.76.96:7180/api/version"
+curl -u 'arthurbaudry:*********' "http://52.19.76.96:7180/api/version"
 v14
 </code></pre>
 
 ## Get CM Version
 <pre><code>
-curl -u 'arthurbaudry:cloudera' "http://52.19.76.96:7180/api/v14/cm/version"
+curl -u 'arthurbaudry:*********' "http://52.19.76.96:7180/api/v14/cm/version"
 {
   "version" : "5.9.0",
   "buildUser" : "jenkins",
@@ -34,7 +56,7 @@ curl -u 'arthurbaudry:cloudera' "http://52.19.76.96:7180/api/v14/cm/version"
 
 ## Get users
 <pre><code>
-curl -u 'arthurbaudry:cloudera' "http://52.19.76.96:7180/api/v14/users"
+curl -u 'arthurbaudry:*********' "http://52.19.76.96:7180/api/v14/users"
 {
   "items" : [ {
     "name" : "admin",
@@ -51,7 +73,7 @@ curl -u 'arthurbaudry:cloudera' "http://52.19.76.96:7180/api/v14/users"
 
 ## Get database server info
 <pre><code>
-curl -u 'arthurbaudry:cloudera' "http://52.19.76.96:7180/api/v14/cm/scmDbInfo"
+curl -u 'arthurbaudry:*********' "http://52.19.76.96:7180/api/v14/cm/scmDbInfo"
 {
   "scmDbType" : "MYSQL",
   "embeddedDbUsed" : false

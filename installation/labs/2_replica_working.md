@@ -35,7 +35,7 @@ sudo yum install -y mysql
 wget http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.40.tar.gz
 tar -xzvf mysql-connector-java-5.1.40.tar.gz
 mkdir /usr/share/java
-sudo mv mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar /usr/share/mysql-connector-java.jar 
+sudo mv mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar /usr/share/java/mysql-connector-java.jar 
 echo "PATH=/usr/share/java/:$PATH" >> ~/.bashrc
 source ~/.bashrc
 </pre></code>
