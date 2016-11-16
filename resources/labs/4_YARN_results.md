@@ -1,5 +1,5 @@
 ## Slowest 
-Teragen 
+### Teragen : 
 <pre><code>
 real	2m2.410s
 user	0m7.359s
@@ -11,7 +11,7 @@ sys	0m0.358s
 </code></pre>
        
 
-Terasort :
+### Terasort :
 <pre><code>
 real	3m34.602s
 user	0m8.212s
@@ -37,8 +37,8 @@ sys	0m0.301s
 -Dmapreduce.map.java.opts.max.heap=409
 </code></pre>
 
-Terasort :
-###<pre><code>
+### Terasort :
+<pre><code>
 real	2m56.511s
 user	0m7.962s
 sys	0m0.359s
