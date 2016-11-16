@@ -9,6 +9,7 @@ mysqldump -u root -p rman > rman.sql
 mysqldump -u root -p metastore > metastore.sql
 mysqldump -u root -p hue > hue.sql
 mysqldump -u root -p oozie > oozie.sql
+</code></pre>
 
 ## Run through wizard via Home > Status > Upgrade cluster
 
