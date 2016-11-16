@@ -1,4 +1,4 @@
-### I can fit 11 container simultaneously in the cluster
+## Switched 10MB to 10 Gb
 
 <pre><code>
 #!/bin/sh
@@ -11,55 +11,40 @@ HADOOP_PATH=/opt/cloudera/parcels/CDH/bin
 echo Testing loop started on `date`
 
 # Mapper containers
-for i in 10    
+for i in 2    
 do
    # Reducer containers
    for j in 2 
    do                 
       # Container memory
-      for k in 1024 
+      for k in 512 1024 
       do                         
-        # Set mapper JVM heap 
-        MAP_MB=`echo "($k*0.8)/1" | bc` 
+         # Set mapper JVM heap 
+         MAP_MB=`echo "($k*0.8)/1" | bc` 
 
-        # Set reducer JVM heap 
-        RED_MB=`echo "($k*0.8)/1" | bc` 
+         # Set reducer JVM heap 
+         RED_MB=`echo "($k*0.8)/1" | bc` 
 
+        $HADOOP_PATH/hadoop jar $HADOOP_MR/hadoop-examples.jar teragen \
+                     -Dmapreduce.job.maps=$i \
+                     -Dmapreduce.map.memory.mb=$k \
+                     -Dmapreduce.map.java.opts.max.heap=$MAP_MB \
+                     100000000 /results/tg-10GB-${i}-${j}-${k} 1>tera_${i}_${j}_${k}.out 2>tera_${i}_${j}_${k}.err                       
 
-        time $HADOOP_PATH/hadoop jar $HADOOP_MR/hadoop-examples.jar teragen \
-                     -Dmapreduce.map.memory.mb=1024 \
-                     -Dmapreduce.job.maps=11 \
-                     -Dmapreduce.map.java.opts.max.heap=819 \
-                     -Dmapred.map.tasks.speculative.execution=false \
-                     100000000 results/teragen                      
+       $HADOOP_PATH/hadoop jar $HADOOP_MR/hadoop-examples.jar terasort \
+                     -Dmapreduce.job.maps=$i \
+                     -Dmapreduce.job.reduces=$j \
+                     -Dmapreduce.map.memory.mb=$k \
+                     -Dmapreduce.map.java.opts.max.heap=$MAP_MB \
+                     -Dmapreduce.reduce.memory.mb=$k \
+                     -Dmapreduce.reduce.java.opts.max.heap=$RED_MB \
+               /results/tg-10GB-${i}-${j}-${k}  \
+                     /results/ts-10GB-${i}-${j}-${k} 1>>tera_${i}_${j}_${k}.out 2>>tera_${i}_${j}_${k}.err                         
 
-        $HADOOP_PATH/hadoop fs -du -h results/teragen  
-
-        time $HADOOP_PATH/hadoop jar $HADOOP_MR/hadoop-examples.jar terasort \
-                     -Dmapreduce.job.maps=80 \
-                     -Dmapreduce.job.reduces=11 \
-                     -Dmapreduce.map.memory.mb=1024 \
-                     -Dmapreduce.map.java.opts.max.heap=819 \
-                     -Dmapreduce.reduce.memory.mb=1024 \
-                     -Dmapreduce.reduce.java.opts.max.heap=819 \
-                     -Dmapred.map.tasks.speculative.execution=false \
-	                   results/teragen  \
-                     results/terasort                       
-
-        $HADOOP_PATH/hadoop fs -rm -r -skipTrash results/teragen          
-        $HADOOP_PATH/hadoop fs -rm -r -skipTrash results/terasort
-
-        echo "mapreduce.map.java.opts.max.heap : $MAP_MB"
-        echo "mapreduce.reduce.java.opts.max.heap : $RED_MB"                
-        echo "mapreduce.job.maps : $i"                
-        echo "mapreduce.job.reduces : $j"                
-        echo "mapreduce.map.memory.mb : $k"
-        echo "mapreduce.reduce.memory.mb : $k"                
-                
+        $HADOOP_PATH/hadoop fs -rm -r -skipTrash /results/tg-10GB-${i}-${j}-${k}                         
+        $HADOOP_PATH/hadoop fs -rm -r -skipTrash /results/ts-10GB-${i}-${j}-${k}                 
       done
    done
 done
-
-echo Testing loop ended on `date`
 <pre><code>
 
