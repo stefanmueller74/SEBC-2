@@ -1,3 +1,45 @@
+## On all hosts
+<pre><code>
+groupadd -g 1000 arthurbaudry
+useradd -u 1000 -g 1000 arthurbaudry
+</code></pre>
+
+## Remove Hue user if problem loading examples for Hive
+
+## On KDC server
+<pre><code>
+yum -y install krb5-server krb5-libs krb5-auth-dialog krb5-workstation
+</code></pre>
+
+## On all hosts
+<pre><code>
+yum -y install krb5-workstation krb5-libs krb5-auth-dialog
+</code></pre>
+
+## On server add  max_life = 1d and max_renewable_life = 7d to /var/kerberos/krb5kdc/kdc.conf
+
+## Edit /etc/krb5.conf on all hosts
+
+## On server 
+<pre><code>
+kdb5_util create -ska
+kadmin.local
+addprinc cloudera-scm@PUNEETHA.COM
+quit
+
+vi /var/kerberos/krb5kdc/kadm5.acl 
+*/admin@ARTHURBAUDRY.COM *
+cloudera-scm@ARTHURBAUDRY.COM admilc
+
+kadmin.local
+addpol admin
+addpol users
+addpol hosts
+
+service krb5kdc start
+service kadmin start
+</code></pre>
+
 ## Add user principal using cloudera-scm
 <pre><code>
 kadmin.local -p cloudera-scm@ARTHURBAUDRY.COM

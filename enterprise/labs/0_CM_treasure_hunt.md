@@ -4,4 +4,4 @@
 ## 4. You have to manually upgrade the package using a new repository for the agent located on the server host and then either manually or through cloudera manager for the rest of the agents
 ## 5 . <pre><code>select total_cpu_user + total_cpu_system where roleType=HUE_SERVER</code></pre>
 ## 6. Hive metastore, WebHCatalog server, HCatalog, Hiveserver2, Gateway
-## 7. Installing KDC server and its clients manually
+## 7. Installing KDC server and its clients manually, create its conf files (kdc.conf, krb5.conf on all hosts), set ticket max life and renewable, initiate the database and set admin users that can add principals and generate keytabs
