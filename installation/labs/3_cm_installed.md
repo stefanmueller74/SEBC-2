@@ -10,7 +10,7 @@ yum update -y
 ## On edge 
 <pre><code>
 sudo yum install -y oracle-j2sdk1.7
-sudo yum install cloudera-manager-daemons cloudera-manager-server
+sudo yum install -y cloudera-manager-daemons cloudera-manager-server
 
 ## Modify /etc/cloudera-scm-server/db.properties with this
 <pre><code>
@@ -21,6 +21,8 @@ com.cloudera.cmf.db.user=cmserver
 com.cloudera.cmf.db.password=password
 com.cloudera.cmf.db.setupType=EXTERNAL
 </code></pre>
+
+## Run mysql_secure_installation
 
 ## On edge as root
 <pre><code>
@@ -47,8 +49,6 @@ grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'password';
 /etc/default/cloudera-scm-server switch xmx to 4G
 sudo service cloudera-scm-server start
 service iptables stop
-
-vi /etc/cloudera-scm-server/db.properties and uncomment the line with localhost
 
 </code></pre>
 

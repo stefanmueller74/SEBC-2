@@ -1,6 +1,7 @@
 ## On node edge and replica node
 
-<pre><code>yum install -y wget
+<pre><code>
+yum install -y wget
 wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
 sudo rpm -ivh mysql-community-release-el6-5.noarch.rpm
 </code></pre>

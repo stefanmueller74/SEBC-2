@@ -11,10 +11,10 @@ hdfs dfs -chown arthurbaudry:arthurbaudry /user/arthurbaudry
 </code></pre>
 
 ## Run job
-### Teragen creates row of 100 bytes so 10 GB / 100 = 10000000000
+### Teragen creates row of 100 bytes so 10 GB / 100 = 100000000
 <pre><code>
 su arthurbaudry
-time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=4 -D dfs.blocksize=32m -Dmapred.map.tasks.speculative.execution=false 10000000000 terasort
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=4 -D dfs.blocksize=32m -Dmapred.map.tasks.speculative.execution=false 100000000 terasort
 </code></pre>
 
 

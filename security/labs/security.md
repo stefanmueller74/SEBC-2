@@ -25,7 +25,7 @@ yum -y install krb5-workstation krb5-libs krb5-auth-dialog
 <pre><code>
 kdb5_util create -s
 kadmin.local
-addprinc cloudera-scm@PUNEETHA.COM
+addprinc cloudera-scm@ARTHURBAUDRY.COM
 quit
 
 vi /var/kerberos/krb5kdc/kadm5.acl 
@@ -100,3 +100,5 @@ chmod 400 /home/arthurbaudry/arthurbaudry.keytab
 
 kinit -kt arthurbaudry.keytab arthurbaudry@ARTHURBAUDRY.COM
 </code></pre>
+
+## In case we cannot reboot the cloudera management service, remove TLS, check conf files of kerberos, reboot kerberos service and retry

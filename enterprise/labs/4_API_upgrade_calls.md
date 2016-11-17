@@ -19,7 +19,6 @@ vi /etc/my.cnf
 [mysqld]
 max_connections = 100
 
-service mysqld restart
 
 sudo service cloudera-scm-server stop
 sudo service cloudera-scm-agent stop
@@ -27,12 +26,38 @@ sudo service cloudera-scm-agent stop
 cp -r /etc/cloudera-scm-server /etc/cloudera-scm-server.back
 cp -r /etc/cloudera-scm-agent /etc/cloudera-scm-agent.back
 
+service mysqld restart
+
+vi /etc/yum.repos.d/cloudera-manager.repo
+[cloudera-manager]
+# Packages for Cloudera Manager, Version 5, on RHEL or CentOS 6 x86_64
+name=Cloudera Manager
+baseurl=https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5/
+gpgkey = https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/RPM-GPG-KEY-cloudera
+gpgcheck = 1
+
 sudo yum clean all
-sudo yum upgrade cloudera-manager-server cloudera-manager-daemons cloudera-manager-agent
-sudo service cloudera-scm-server start
+sudo yum upgrade -y cloudera-manager-server cloudera-manager-daemons cloudera-manager-agent
 </code></pre>
 
 ## Install with cloudera manager the other agents
+### OR
+vi /etc/yum.repos.d/cloudera-manager.repo
+[cloudera-manager]
+# Packages for Cloudera Manager, Version 5, on RHEL or CentOS 6 x86_64
+name=Cloudera Manager
+baseurl=https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5/
+gpgkey = https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/RPM-GPG-KEY-cloudera
+gpgcheck = 1
+
+sudo service cloudera-scm-agent stop
+sudo yum clean all
+sudo yum upgrade -y cloudera-manager-agent
+
+## Reboot
+<pre><code>
+sudo service cloudera-scm-server start
+</code></pre>
 
 # Results
 
