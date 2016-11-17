@@ -1,7 +1,8 @@
 ## On all hosts
 <pre><code>
 groupadd -g 1000 arthurbaudry
-useradd -u 1000 -g 1000 arthurbaudry
+useradd -u 1000 -g arthurbaudry arthurbaudry
+usermod -a -G arthurbaudry arthurbaudry
 </code></pre>
 
 ## Remove Hue user if problem loading examples for Hive
@@ -22,7 +23,7 @@ yum -y install krb5-workstation krb5-libs krb5-auth-dialog
 
 ## On server 
 <pre><code>
-kdb5_util create -ska
+kdb5_util create -s
 kadmin.local
 addprinc cloudera-scm@PUNEETHA.COM
 quit
