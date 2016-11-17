@@ -33,8 +33,13 @@ keytool -list -v -keystore example.keystore -alias ip-172-31-9-39.eu-west-1.comp
 
 mv example.keystore /opt/cloudera/security/jks/cmhost-keystore.jks
 </code></pre>
+
 ## Activate TLS for agent in Administration > Settings > Security and provide the keystore path and password
 <pre><code>
 sudo service cloudera-scm-server restart 
 sudo service cloudera-scm-agent restart 
 </code></pre>
+
+## Activate TLS agent encryption but also specify the keystore path and password
+
+## If an error with TLS agent activation that breaks the cluster use mysql to find the tls_agent property in the CONFIGS table 
