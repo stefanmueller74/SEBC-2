@@ -17,19 +17,19 @@ chown 755 /opt/cloudera/security/CAcerts
 export JAVA_HOME=/usr/java/jdk1.7.0_67-cloudera
 export PATH=$JAVA_HOME/bin:$PATH
 
-keytool -genkeypair -keystore example.keystore -keyalg RSA -alias ip-172-31-12-212.eu-west-1.compute.internal -dname "CN=ip-172-31-12-212.eu-west-1.compute.internal,OU=Security,O=Example,L=Denver,ST=Colorado,C=US" -storepass password -keypass password
+keytool -genkeypair -keystore example.keystore -keyalg RSA -alias ip-172-31-9-39.eu-west-1.compute.internal -dname "CN=ip-172-31-9-39.eu-west-1.compute.internal,OU=Security,O=Example,L=Denver,ST=Colorado,C=US" -storepass password -keypass password
 
 sudo cp $JAVA_HOME/jre/lib/security/cacerts $JAVA_HOME/jre/lib/security/jssecacerts
 
-keytool -export -alias ip-172-31-12-212.eu-west-1.compute.internal -keystore example.keystore -rfc -file selfsigned.cer
+keytool -export -alias ip-172-31-9-39.eu-west-1.compute.internal -keystore example.keystore -rfc -file selfsigned.cer
 
-cp selfsigned.cer /opt/cloudera/security/x509/ip-172-31-12-212.eu-west-1.compute.internal.pem
+cp selfsigned.cer /opt/cloudera/security/x509/ip-172-31-9-39.eu-west-1.compute.internal.pem
 
 cp selfsigned.cer /opt/cloudera/security/jks/
 
-keytool -import -alias ip-172-31-12-212.eu-west-1.compute.internal -file /opt/cloudera/security/jks/selfsigned.cer -keystore $JAVA_HOME/jre/lib/security/jssecacerts -storepass changeit
+keytool -import -alias ip-172-31-9-39.eu-west-1.compute.internal -file /opt/cloudera/security/jks/selfsigned.cer -keystore $JAVA_HOME/jre/lib/security/jssecacerts -storepass changeit
 
-keytool -list -v -keystore example.keystore -alias ip-172-31-12-212.eu-west-1.compute.internal
+keytool -list -v -keystore example.keystore -alias ip-172-31-9-39.eu-west-1.compute.internal
 
 mv example.keystore /opt/cloudera/security/jks/cmhost-keystore.jks
 </code></pre>

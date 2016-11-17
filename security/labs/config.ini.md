@@ -1,6 +1,6 @@
-General]
+[General]
 # Hostname of the CM server.
-server_host=ip-172-31-12-212.eu-west-1.compute.internal
+server_host=ip-172-31-9-39.eu-west-1.compute.internal
 
 # Port that the CM server is listening on.
 server_port=7182
