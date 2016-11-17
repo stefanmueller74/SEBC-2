@@ -1,0 +1,1 @@
+## Check /etc/group, the user that will have sentry admin access through hue should be in the group that is mention in the sentry config as an admin
