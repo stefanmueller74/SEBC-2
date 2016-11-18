@@ -1,3 +1,4 @@
+<pre><code>
 # Copyright (c) 2012 Cloudera, Inc. All rights reserved.
 #
 # This file describes the database connection.
@@ -20,3 +21,4 @@ com.cloudera.cmf.db.user=scm
 # The database user's password
 com.cloudera.cmf.db.password=password
 com.cloudera.cmf.db.setupType=EXTERNAL
+</code></pre>
