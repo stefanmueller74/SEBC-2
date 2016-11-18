@@ -1,6 +1,6 @@
 ## GRANTS
 ### No GRANT ALL PRIVILEGES ON `scm`.* TO 'scm'@'%'
-
+<pre><code>
 SHOW GRANTS FOR rman;
 +-----------------------------------------------------------------------------------------------------+
 | Grants for rman@%                                                                                   |
@@ -26,9 +26,10 @@ SHOW GRANTS FOR scm;
 | GRANT USAGE ON *.* TO 'scm'@'%' IDENTIFIED BY PASSWORD '*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19' |
 +----------------------------------------------------------------------------------------------------+
 1 row in set (0.00 sec)
+</code></pre>
 
 ### However
-
+<pre><code>
 show grants for 'scm'@'ip-172-31-15-25.eu-west-1.compute.internal';
 +---------------------------------------------------------------------------------------------------------------------------------------------+
 | Grants for scm@ip-172-31-15-25.eu-west-1.compute.internal                                                                                   |
@@ -37,10 +38,12 @@ show grants for 'scm'@'ip-172-31-15-25.eu-west-1.compute.internal';
 | GRANT ALL PRIVILEGES ON `scm`.* TO 'scm'@'ip-172-31-15-25.eu-west-1.compute.internal'                                                       |
 +---------------------------------------------------------------------------------------------------------------------------------------------+
 2 rows in set (0.00 sec)
+</code></pre>
 
 ### Comment : No Hue database to configure during CDH setup, doing it manually in the configuration, switching from SQLite to MySQL
 
 ### User directories created
+<pre><code>
 hdfs dfs -ls /user
 Found 6 items
 drwxr-xr-x   - bavaria bavaria          0 2016-11-18 09:20 /user/bavaria
@@ -49,8 +52,10 @@ drwxrwxr-t   - hive    hive             0 2016-11-18 09:17 /user/hive
 drwxrwxr-x   - hue     hue              0 2016-11-18 09:17 /user/hue
 drwxrwxr-x   - oozie   oozie            0 2016-11-18 09:18 /user/oozie
 drwxr-xr-x   - saxony  saxony           0 2016-11-18 09:21 /user/saxony
+</code></pre>
 
 ### Getting hosts from API
+<pre><code>
 curl -u 'admin:admin' http://52.31.2.41:7180/api/v12/hosts
 {
   "items" : [ {
@@ -115,3 +120,4 @@ curl -u 'admin:admin' http://52.31.2.41:7180/api/v12/hosts
     "totalPhysMemBytes" : 15664570368
   } ]
 }
+</code></pre>
