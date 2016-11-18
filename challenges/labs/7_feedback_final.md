@@ -12,7 +12,7 @@ Most : everything else
 
 The overview of all the components for security, again I would have loved to go deeper on that. I liked also the advices on how to depict the cloudera distribution to our client, what's possible, what's not. 
 
-###How long before you are ready to to install a production cluster by yourself? What do you need to work on?
+####How long before you are ready to to install a production cluster by yourself? What do you need to work on?
 
 I consider myself ready but I could use an upgrade on security
 
