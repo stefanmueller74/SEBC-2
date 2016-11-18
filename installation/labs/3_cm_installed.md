@@ -9,6 +9,7 @@ yum update -y
 
 ## On edge 
 <pre><code>
+yum update -y
 sudo yum install -y oracle-j2sdk1.7
 sudo yum install -y cloudera-manager-daemons cloudera-manager-server
 
