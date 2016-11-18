@@ -1,12 +1,20 @@
+### AWS information
+<pre><code>
 eu-west-1b
 ami-e4aefd97 with volumes resized to a 100Gb based on centos 6.7
 centos 6.7
+</code></pre>
 
+### Disk space
+<pre><code>
 df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/xvda1       99G  940M   93G   1% /
 tmpfs           7.3G     0  7.3G   0% /dev/shm
+</code></pre>
 
+### My repository
+<pre><code>
 yum repolist enabled
 Failed to set locale, defaulting to C
 Loaded plugins: fastestmirror, presto
@@ -22,8 +30,10 @@ base                                                                            
 extras                                                                                                                         CentOS-6 - Extras                                                                                                                            62
 updates                                                                                                                        CentOS-6 - Updates                                                                                                                          603
 repolist: 7361
+</code></pre>
 
-
+### User added
+<pre><code>
 groupadd democratic
 groupadd social
 useradd -u 2700 -g social bavaria
@@ -38,3 +48,4 @@ saxony:x:2800:501::/home/saxony:/bin/bash
 cat /etc/group
 democratic:x:501:saxony
 social:x:502:bavaria
+</code></pre>

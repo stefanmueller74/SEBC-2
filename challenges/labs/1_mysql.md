@@ -1,6 +1,11 @@
+### Version of mysql
+<pre><code>
 mysql --version
 mysql  Ver 14.14 Distrib 5.6.34, for Linux (x86_64) using  EditLine wrapper
+</code></pre>
 
+### Grants I used at first
+<pre><code>
 create database rman DEFAULT CHARACTER SET utf8;
 create database hive DEFAULT CHARACTER SET utf8;
 create database oozie DEFAULT CHARACTER SET utf8;
@@ -19,7 +24,10 @@ grant all on hive.* TO 'hive'@'%' IDENTIFIED BY 'password';
 grant all on hue.* TO 'hue'@'%' IDENTIFIED BY 'password';
 grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'password';
 grant all on sentry.* TO 'sentry'@'%' IDENTIFIED BY 'password';
+</code></pre>
 
+### My permissions at start
+<pre><code>
 show grants for scm;
 +----------------------------------------------------------------------------------------------------+
 | Grants for scm@%                                                                                   |
@@ -73,7 +81,10 @@ show grants for sentry;
 | GRANT ALL PRIVILEGES ON `sentry`.* TO 'sentry'@'%'                                                    |
 +-------------------------------------------------------------------------------------------------------+
 2 rows in set (0.00 sec)
+</code></pre>
 
+### Databases available
+<pre><code>
 show databases;
 +--------------------+
 | Database           |
@@ -89,3 +100,4 @@ show databases;
 | sentry             |
 +--------------------+
 9 rows in set (0.00 sec)
+</code></pre>
