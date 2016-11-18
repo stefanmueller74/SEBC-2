@@ -20,7 +20,9 @@ chkconfig mysqld on
 <pre><code>service iptables stop</code></pre>
 
 ## On other nodes
-<pre><code>wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+<pre><code>
+yum install -y wget
+wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
 sudo rpm -ivh mysql-community-release-el6-5.noarch.rpm
 </code></pre>
 
