@@ -42,6 +42,7 @@ sudo yum upgrade -y cloudera-manager-server cloudera-manager-daemons cloudera-ma
 
 ## Install with cloudera manager the other agents
 ### OR
+<pre><code>
 vi /etc/yum.repos.d/cloudera-manager.repo
 [cloudera-manager]
 # Packages for Cloudera Manager, Version 5, on RHEL or CentOS 6 x86_64
@@ -53,6 +54,7 @@ gpgcheck = 1
 sudo service cloudera-scm-agent stop
 sudo yum clean all
 sudo yum upgrade -y cloudera-manager-agent
+</code></pre>
 
 ## Reboot
 <pre><code>
