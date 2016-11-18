@@ -1,1 +1,1 @@
-## See my issue, I never run that script I edit the db.properties manually
+## See my issue, I've never run that script, I edited the db.properties manually
