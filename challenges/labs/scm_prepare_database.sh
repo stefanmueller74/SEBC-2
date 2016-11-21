@@ -1,0 +1,1 @@
+## See my issue, I've never run that script, I edited the db.properties manually
